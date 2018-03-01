@@ -11,6 +11,7 @@ class Car(object):
         return step >= self.notAvailableFor
 
     def findRide(self, rides, step, STEP_COUNT):
+        rides.sort(key=lambda r: getDistance(self.position, r.start_position))
         for r in rides:
             timetodo = r.isDoable(rides, self, step, STEP_COUNT)
             if timetodo != -1:
