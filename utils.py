@@ -14,7 +14,8 @@ def read_subject(subject):
                 constants = line.split()
                 STEP_COUNT = int(constants[5])
                 BONUS = int(constants[4])
-                cars = [Car()]*int(constants[2])
+                for j in range(int(constants[2])):
+                    cars.append(Car())
             else:
                 integers = [int(elt) for elt in line.split()]
                 integers.append(i-1)
