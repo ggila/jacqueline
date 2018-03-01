@@ -1,6 +1,7 @@
 from car import Car
 from ride import Ride
 
+
 def readSubject(subject):
     rides = []
     cars = []
