@@ -9,6 +9,8 @@ for f in ["subject/a_example.in", "subject/b_should_be_easy.in", "subject/c_no_h
             print step
         for car in cars:
             if car.available(step):
-                car.findRide(rides, step, STEP_COUNT)
+                r = car.findRide(rides, step, STEP_COUNT)
+                if r is not None:
+                    rides.remove(r)
         step += 1
     write_result(f, cars)
