@@ -10,11 +10,11 @@ class Ride(object):
         self.number = i
 
     def isDoable(self, car, step, STEP_COUNT):
-        timeToGetCar = getDistance(self.start_position - car.position)
-        if step + timeToGetCar < earlier_start:
+        timeToGetCar = getDistance(self.start_position, car.position)
+        if step + timeToGetCar < self.earlier_start:
             return False
-        timeToTravel = getDistance(self.start_position - self.dest_position)
-        if step + timeToGetCar + timeToTravel < latest_finish:
+        timeToTravel = getDistance(self.start_position, self.dest_position)
+        if step + timeToGetCar + timeToTravel < self.latest_finish:
             return False
         if step + timeToGetCar + timeToTravel < STEP_COUNT:
             return False

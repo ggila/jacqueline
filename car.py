@@ -6,6 +6,7 @@ class Car(object):
         self.available = True
         self.position = (0, 0)
         self.historic = []
+        self.notAvailableFor = 0
 
     def isAvailable(self):
         return self.available
@@ -18,12 +19,13 @@ class Car(object):
     
     def findRide(self, rides, step, STEP_COUNT):
         for r in rides:
-            if r.isDoable(self.position, step, STEP_COUNT):
+            if r.isDoable(self, step, STEP_COUNT):
                 self.assign(r)
 
     def assign(self, r):
         self.available = False
-        self.notAvailableFor = getDistance(r.start_position - r.dest_position)
+        self.notAvailableFor = getDistance(r.start_position, r.dest_position)
         self.historic.append(r.number)
+        self.position = r.dest_position
 
     

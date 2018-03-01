@@ -14,7 +14,7 @@ def read_subject(subject):
                 constants = line.split()
                 STEP_COUNT = int(constants[5])
                 BONUS = int(constants[4])
-                cars = [Car]*int(constants[2])
+                cars = [Car()]*int(constants[2])
             else:
                 integers = [int(elt) for elt in line.split()]
                 integers.append(i-1)
@@ -22,7 +22,7 @@ def read_subject(subject):
                 rides.append(ride)
     return STEP_COUNT, BONUS, rides, cars
 
-def write_result(cars, subject):
+def write_result(subject, cars):
     result = path.basename(subject)
     result = path.splitext(result)[0]+".out"
     result = path.join("results", result)
@@ -33,3 +33,4 @@ def write_result(cars, subject):
         all_lines.append(" ".join(line))
     with open(result, "w") as f:
         f.write("\n".join(all_lines))
+        f.write("\n")
