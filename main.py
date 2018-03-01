@@ -6,5 +6,5 @@ for f in ["subject/a_example.in", "subject/b_should_be_easy.in", "subject/c_no_h
     while step < STEP_COUNT:
         for car in cars:
             car.update()
-            if car.isAvailable(step):
-                car.findRide(rides)
+            if car.isAvailable():
+                car.findRide(rides, step, STEP_COUNT)
