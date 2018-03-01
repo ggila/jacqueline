@@ -1,7 +1,8 @@
-
 from reader import readSubject
 
-STEP_COUNT, rides, cars = readSubject()
+subject = "input/a_example.in"
+
+STEP_COUNT, BONUS, rides, cars = readSubject(subject)
 
 step = 0
 while step < STEP_COUNT:
