@@ -13,8 +13,9 @@ class Ride(object):
 
     def isDoable(self, rides, car, step, STEP_COUNT):
         timeToGetCar = getDistance(self.start_position, car.position)
-        if step + timeToGetCar < self.earlier_start:
-            return -1
+        diffdatestart = self.earlier_start - step - timeToGetCar 
+        if diffdatestart > 0:
+            timeToGetCar += diffdatestart
         timeToTravel = self.duration
         if step > self.latest_finish or timeToTravel + step  > STEP_COUNT:
             rides.remove(self)
