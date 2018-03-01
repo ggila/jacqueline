@@ -1,7 +1,7 @@
-from reader import readSubject
+from utils import read_subject
 
 for f in ["subject/a_example.in", "subject/b_should_be_easy.in", "subject/c_no_hurry.in", "subject/d_metropolis.in", "subject/e_high_bonus.in"]:
-    STEP_COUNT, BONUS, rides, cars = readSubject(f)
+    STEP_COUNT, BONUS, rides, cars = read_subject(f)
     step = 0
     while step < STEP_COUNT:
         for car in cars:

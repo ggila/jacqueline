@@ -21,7 +21,7 @@ class Car(object):
             if r.isDoable(self.position, step, STEP_COUNT):
                 self.assign(r)
 
-    def assign(r):
+    def assign(self, r):
         self.available = False
         self.notAvailableFor = getDistance(r.start_position - r.dest_position)
         self.historic.append(r.number)
