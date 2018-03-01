@@ -19,6 +19,6 @@ class Ride(object):
         if step > self.latest_finish or timeToTravel + step  > STEP_COUNT:
             rides.remove(self)
             return -1
-        if step + timeToGetCar + timeToTravel < min(self.latest_finish, STEP_COUNT):
+        if step + timeToGetCar + timeToTravel > min(self.latest_finish, STEP_COUNT):
             return -1
         return step + timeToGetCar + timeToTravel
