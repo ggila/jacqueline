@@ -15,6 +15,7 @@ def readSubject(subject):
                 BONUS = int(constants[4])
                 cars = [Car]*int(constants[2])
             else:
-                ride = Ride(*line.split())
+                integers = [int(elt) for elt in line.split()]
+                ride = Ride(*integers)
                 rides.append(ride)
     return STEP_COUNT, BONUS, rides, cars
