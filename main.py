@@ -2,5 +2,6 @@
 step = 0
 while step < STEP_COUNT:
     for car in cars:
-        if car.isAvailable(step):
-            car.findRide(rides)
+        car.update()
+        if car.isAvailable():
+            car.findRide(rides, step)
