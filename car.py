@@ -3,28 +3,24 @@ from distance import getDistance
 class Car(object):
 
     def __init__(self):
-        self.available = True
         self.position = (0, 0)
         self.historic = []
-        self.notAvailableFor = 0
+        self.notAvailableFor = -1
 
-    def isAvailable(self):
-        return self.available
-
-    def update(self):
-        if self.available == False:
-            self.notAvailableFor -= 1
-        if self.notAvailableFor <= 0:
-            self.available = True
+    def available(self, step):
+        return step >= self.notAvailableFor
     
     def findRide(self, rides, step, STEP_COUNT):
         for r in rides:
-            if r.available and r.isDoable(self, step, STEP_COUNT):
-                self.assign(r)
+            if not r.available:
+                continue
+            timetodo = r.isDoable(self, step, STEP_COUNT)
+            if timetodo != -1:
+                self.assign(r, timetodo)
+                return
 
-    def assign(self, r):
-        self.available = False
-        self.notAvailableFor = getDistance(r.start_position, r.dest_position)
+    def assign(self, r, timetodo):
+        self.notAvailableFor = timetodo
         self.historic.append(r.number)
         self.position = r.dest_position
         r.available = False
