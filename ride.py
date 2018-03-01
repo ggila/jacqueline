@@ -11,11 +11,14 @@ class Ride(object):
         self.available = True
         self.duration = getDistance(self.start_position, self.dest_position)
 
-    def isDoable(self, car, step, STEP_COUNT):
+    def isDoable(self, rides, car, step, STEP_COUNT):
         timeToGetCar = getDistance(self.start_position, car.position)
         if step + timeToGetCar < self.earlier_start:
             return -1
         timeToTravel = self.duration
+        if step > self.latest_finish or timeToTravel + step  > STEP_COUNT:
+            rides.remove(self)
+            return -1
         if step + timeToGetCar + timeToTravel < self.latest_finish:
             return -1
         if step + timeToGetCar + timeToTravel < STEP_COUNT:

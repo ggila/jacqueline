@@ -9,20 +9,21 @@ class Car(object):
 
     def available(self, step):
         return step >= self.notAvailableFor
-    
+
     def findRide(self, rides, step, STEP_COUNT):
         for r in rides:
             if not r.available:
                 continue
-            timetodo = r.isDoable(self, step, STEP_COUNT)
+            timetodo = r.isDoable(self, rides, step, STEP_COUNT)
             if timetodo != -1:
-                self.assign(r, timetodo)
+                self.assign(r, timetodo, rides)
                 return
 
-    def assign(self, r, timetodo):
+    def assign(self, r, timetodo, rides):
         self.notAvailableFor = timetodo
         self.historic.append(r.number)
         self.position = r.dest_position
-        r.available = False
+        rides.remove(r)
+        return rides
 
     
