@@ -26,7 +26,4 @@ class Car(object):
         self.notAvailableFor = getDistance(r.start_position - r.dest_position)
         self.historic.append(r.number)
 
-    def isAvailable(self):
-        raise NotImplementedError
-
     
