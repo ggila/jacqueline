@@ -1,4 +1,4 @@
-
+from distance import getDistance
 
 class Car(object):
 
