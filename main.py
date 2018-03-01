@@ -6,12 +6,10 @@ for f in ["subject/a_example.in"]:
     step = 0
     print STEP_COUNT
     while step < STEP_COUNT:
-        print step
         for car in cars:
             car.update()
             if car.isAvailable():
                 car.findRide(rides, step, STEP_COUNT)
-
         step += 1
     print "writing"
     

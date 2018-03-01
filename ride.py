@@ -8,6 +8,7 @@ class Ride(object):
         self.earlier_start = s
         self.latest_finish = f
         self.number = i
+        self.available = True
 
     def isDoable(self, car, step, STEP_COUNT):
         timeToGetCar = getDistance(self.start_position, car.position)
